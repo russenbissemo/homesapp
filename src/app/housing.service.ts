@@ -1,0 +1,12 @@
+import { Injectable } from '@angular/core';
+import {Housinglocation} from './housinglocation';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class HousingService {
+
+  getAllHousingLocations(): HousingLocation[]
+
+  constructor() { }
+}
