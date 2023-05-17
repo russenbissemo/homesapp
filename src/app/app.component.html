@@ -1,8 +1,13 @@
 <main>
+  <a [routerLink]="['/']">
   <header class="brand-name">
+     <div class="header-brand">
       <img class class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true"/>
+   
+    </div>
   </header>
+</a>
   <section class="content">
-      <app-home></app-home>
+     <router-outlet></router-outlet>
   </section>
 </main>

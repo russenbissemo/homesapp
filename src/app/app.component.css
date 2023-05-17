@@ -1,0 +1,6 @@
+.header-brand {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    
+}
