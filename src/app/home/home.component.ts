@@ -12,9 +12,20 @@ export class HomeComponent {
   //housingLocationList data as an array of data
 
   housingLocationList: Housinglocation[] = [];
+  filteredLocationList: Housinglocation[] = []; 
 
   constructor(private housingService: HousingService) {
     this.housingLocationList = this.housingService.getAllHousingLocations();
+    this.filteredLocationList = this.housingLocationList;
+  }
+  filterResults(text:string){
+    if(!text){
+      this.filteredLocationList = this.housingLocationList;
+    }
+    this.filteredLocationList = this.housingLocationList.filter(
+      housingLocation => 
+      housingLocation?.city.toLowerCase().includes(text.toLowerCase())
+    );
   }
 }
 

@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HousingService } from '../housing.service';
 import { Housinglocation } from '../housinglocation';
 import {Location} from '@angular/common';
+import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms'
 
 @Component({
   selector: 'app-details',
@@ -15,6 +16,12 @@ export class DetailsComponent  {
   @Input() housinglocation?: Housinglocation
   housingLocationId = -1;
   housingLocation: Housinglocation | undefined;
+  applyForm = new FormGroup({
+        firstName: new FormControl(''),
+        lastName: new FormControl(''),
+        email: new FormControl('')
+
+  })
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +30,14 @@ export class DetailsComponent  {
   ){
     const housingLocationId = Number(this.route.snapshot.params['id']);
     this.housingLocation = this.HousingService.getHousingLocationById(housingLocationId);
+  }
+
+  submitApplication() {
+    this.HousingService.submitApplication(
+      this.applyForm.value.firstName ?? '',
+      this.applyForm.value.lastName ?? '',
+      this.applyForm.value.email ?? ''
+    );
   }
 
 
